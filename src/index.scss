@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@import './scss/app.scss';
+@import './scss/game.scss';
+@import './scss/background.scss';
+@import './scss/ui.scss';
+@import './scss/animations.scss';
+@import './scss/settingsPage.scss';
+@import './scss/auth.scss';
+@import './scss/winners.scss';

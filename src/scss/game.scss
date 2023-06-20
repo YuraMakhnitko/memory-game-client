@@ -1,0 +1,35 @@
+.game {
+  &__header {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    animation: bottom-to-top 0.3s ease;
+    animation-delay: 0.3s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+
+    @media (max-width: 590px) {
+      gap: 5px;
+    }
+  }
+  &__header-label {
+    color: white;
+    margin: 0px 0px 15px 0px;
+  }
+
+  &__cards-block {
+    display: flex;
+    justify-content: center;
+    animation: bottom-to-top 0.3s ease;
+    animation-delay: 0.4s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+  }
+}
+
+.tabs-container {
+  animation: bottom-to-top 0.3s ease;
+  animation-delay: 0.2s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}

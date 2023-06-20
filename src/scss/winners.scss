@@ -1,0 +1,66 @@
+.winners-title {
+  opacity: 0;
+  animation: bottom-to-top 0.3s ease;
+  animation-delay: 0.1s;
+  animation-fill-mode: forwards;
+}
+
+.winners {
+  display: flex;
+  flex-direction: column;
+  max-width: 550px;
+  width: 100%;
+  opacity: 0;
+  animation: bottom-to-top 0.3s ease;
+  animation-delay: 0.3s;
+  animation-fill-mode: forwards;
+}
+
+.winner {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 0.5px solid rgba(97, 218, 251, 0.2);
+
+  &__left-side {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__place {
+    margin: 5px 0px;
+    font-size: 24px;
+    text-align: left;
+    padding-left: 8px;
+    padding-bottom: 3px;
+    padding-top: 5px;
+    background: -webkit-linear-gradient(white, rgb(164, 235, 255));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  &__name {
+    margin: 5px 0px;
+    font-size: 24px;
+    font-weight: 500;
+    text-align: left;
+    padding-left: 8px;
+    padding-bottom: 3px;
+    padding-top: 5px;
+    background: -webkit-linear-gradient(white, rgb(54, 164, 194));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  &__points {
+    margin: 5px 0px;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: left;
+    padding-left: 8px;
+    padding-bottom: 3px;
+    padding-top: 5px;
+    background: -webkit-linear-gradient(white, rgba(97, 218, 251, 1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}

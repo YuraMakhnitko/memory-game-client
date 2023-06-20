@@ -1,0 +1,101 @@
+.App {
+  height: 100%;
+  overflow: hidden;
+  background: radial-gradient(ellipse at bottom, #3a5b83 0%, #000003 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: #61dafb;
+  text-align: center;
+  padding: 0px 15px;
+}
+
+#header {
+  color: #fff;
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 40px;
+  letter-spacing: 10px;
+  padding-left: 10px;
+  @media (max-width: 495px) {
+    font-size: 30px;
+    letter-spacing: 5px;
+  }
+}
+
+#header span {
+  background: -webkit-linear-gradient(white, rgba(97, 218, 251, 1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#game-main-text {
+  color: #fff;
+  text-align: center;
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: 20px;
+  letter-spacing: 5px;
+  @media (max-width: 590px) {
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+}
+
+#game-main-text span {
+  font-weight: 700;
+  font-size: 25px;
+  background: -webkit-linear-gradient(white, rgba(97, 218, 251, 1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  @media (max-width: 590px) {
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
+}
+
+#game-email-text {
+  color: #fff;
+  text-align: center;
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: 20px;
+  letter-spacing: 5px;
+  @media (max-width: 590px) {
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+}
+
+#game-email-text span {
+  font-weight: 500;
+  font-size: 20px;
+  text-transform: none;
+  background: -webkit-linear-gradient(white, rgba(97, 218, 251, 1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  @media (max-width: 590px) {
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
+}
+
+#winners-text {
+  color: #fff;
+  text-align: center;
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: 24px;
+  letter-spacing: 5px;
+}
+
+#winners-text span {
+  font-weight: 700;
+  font-size: 25px;
+  background: -webkit-linear-gradient(white, rgba(97, 218, 251, 1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
