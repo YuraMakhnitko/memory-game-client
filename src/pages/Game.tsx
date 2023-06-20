@@ -138,6 +138,7 @@ export const Game: React.FC = () => {
         // );
 
         // dispatch(setPlanets(newPlanets));
+        setCount(0);
         dispatch(setClickedPlanet(undefined));
         return;
       }
