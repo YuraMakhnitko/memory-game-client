@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import useSound from 'use-sound';
 
 import { createPlanets, PlanetsType } from '../settings/setup';
@@ -27,6 +27,7 @@ import { ResultProps } from '../redux/game/types';
 
 export const Game: React.FC = () => {
   const dispatch = useDispatch() as AppDispatch;
+  const [count, setCount] = useState(0);
 
   const defaultTimer: number = 90;
 
@@ -94,46 +95,69 @@ export const Game: React.FC = () => {
   };
 
   const handleCardClick = (currentClickedPlanet: PlanetsType) => {
-    flipSound();
-    if (!inGame && !isFailed) {
-      dispatch(setInGame(true));
-    }
+    if (count > 1) {
+      console.log(count, 'count');
+      setTimeout(() => {
+        setCount(0);
+        return;
+      }, 1000);
+      // setCount(0);
+      // return;
+    } else {
+      setCount(count + 1);
+      flipSound();
+      if (!inGame && !isFailed) {
+        dispatch(setInGame(true));
+      }
 
-    // Flip the card
-    const newPlanets = planets.map((planet) =>
-      planet.id === currentClickedPlanet.id
-        ? { ...planet, flipped: true, clickable: false }
-        : planet
-    );
-    dispatch(setPlanets(newPlanets));
-
-    // If this is the first card that is flipped
-    // just keep it flipped
-    if (!clickedPlanet) {
-      dispatch(setClickedPlanet({ ...currentClickedPlanet }));
-      return;
-    }
-
-    // If it's a match
-    if (clickedPlanet.matchingCardId === currentClickedPlanet.id) {
-      successSound();
-      const newPairNumber = matchedPairs + 1;
-      dispatch(setMatchedPairs(newPairNumber));
-      dispatch(setClickedPlanet(undefined));
-      return;
-    }
-
-    // If it's not a matched pair, wait one second and flip them back
-    setTimeout(() => {
+      // Flip the card
       const newPlanets = planets.map((planet) =>
-        planet.id === clickedPlanet.id || planet.id === currentClickedPlanet.id
-          ? { ...planet, flipped: false, clickable: true }
+        planet.id === currentClickedPlanet.id
+          ? { ...planet, flipped: true, clickable: false }
           : planet
       );
       dispatch(setPlanets(newPlanets));
-    }, 1000);
 
-    dispatch(setClickedPlanet(undefined));
+      // If this is the first card that is flipped
+      // just keep it flipped
+      if (!clickedPlanet) {
+        dispatch(setClickedPlanet({ ...currentClickedPlanet }));
+        return;
+      }
+
+      // If it's a match
+      if (clickedPlanet.matchingCardId === currentClickedPlanet.id) {
+        successSound();
+        const newPairNumber = matchedPairs + 1;
+        dispatch(setMatchedPairs(newPairNumber));
+
+        // const newPlanets = planets.map((planet) =>
+        //   planet.id === clickedPlanet.id || planet.id === currentClickedPlanet.id
+        //     ? { ...planet, clickable: false }
+        //     : planet
+        // );
+
+        // dispatch(setPlanets(newPlanets));
+        dispatch(setClickedPlanet(undefined));
+        return;
+      }
+
+      // If it's not a matched pair, wait one second and flip them back
+      setTimeout(() => {
+        const newPlanets = planets.map((planet) =>
+          planet.id === clickedPlanet.id ||
+          planet.id === currentClickedPlanet.id
+            ? { ...planet, flipped: false, clickable: true }
+            : planet
+        );
+        setCount(0);
+        dispatch(setPlanets(newPlanets));
+      }, 1000);
+
+      dispatch(setClickedPlanet(undefined));
+      console.log(clickedPlanet, 'clicked');
+      console.log(currentClickedPlanet, 'current');
+    }
   };
   return (
     <div className="game">
