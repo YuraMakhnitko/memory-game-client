@@ -96,13 +96,10 @@ export const Game: React.FC = () => {
 
   const handleCardClick = (currentClickedPlanet: PlanetsType) => {
     if (count > 1) {
-      console.log(count, 'count');
       setTimeout(() => {
         setCount(0);
         return;
       }, 1000);
-      // setCount(0);
-      // return;
     } else {
       setCount(count + 1);
       flipSound();
@@ -130,14 +127,6 @@ export const Game: React.FC = () => {
         successSound();
         const newPairNumber = matchedPairs + 1;
         dispatch(setMatchedPairs(newPairNumber));
-
-        // const newPlanets = planets.map((planet) =>
-        //   planet.id === clickedPlanet.id || planet.id === currentClickedPlanet.id
-        //     ? { ...planet, clickable: false }
-        //     : planet
-        // );
-
-        // dispatch(setPlanets(newPlanets));
         setCount(0);
         dispatch(setClickedPlanet(undefined));
         return;
@@ -151,13 +140,11 @@ export const Game: React.FC = () => {
             ? { ...planet, flipped: false, clickable: true }
             : planet
         );
-        setCount(0);
         dispatch(setPlanets(newPlanets));
+        setCount(0);
       }, 1000);
 
       dispatch(setClickedPlanet(undefined));
-      console.log(clickedPlanet, 'clicked');
-      console.log(currentClickedPlanet, 'current');
     }
   };
   return (
