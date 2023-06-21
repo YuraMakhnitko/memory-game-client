@@ -22,6 +22,10 @@
   justify-content: space-between;
   width: 100%;
   border-bottom: 0.5px solid rgba(97, 218, 251, 0.2);
+  opacity: 0;
+  animation: bottom-to-top 0.3s ease;
+  animation-delay: 0.3s;
+  animation-fill-mode: forwards;
 
   &__left-side {
     display: flex;
