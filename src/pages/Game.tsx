@@ -58,18 +58,6 @@ export const Game: React.FC = () => {
         dispatch(setResModalOpen(true));
       }, 300);
     }
-    // if (isFailed) {
-    //   dispatch(setResModalOpen(true));
-    //   failSound();
-    //   console.log('fail sound');
-    // }
-
-    // if (count > 1) {
-    //   setTimeout(() => {
-    //     setCount(0);
-    //     return;
-    //   }, 1000);
-    // }
   }, [matchedPairs]);
 
   useEffect(() => {
