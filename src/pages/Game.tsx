@@ -95,7 +95,7 @@ export const Game: React.FC = () => {
   const onRestart = (): void => {
     dispatch(setIsWon(false));
     dispatch(setPlanets(shufflePlanetsArray(createPlanets())));
-    setMatchedPairs(0);
+    dispatch(setMatchedPairs(0));
     dispatch(setTimer(defaultTimer));
     dispatch(setIsFailed(false));
     setClickedPlanet(undefined);
@@ -103,10 +103,6 @@ export const Game: React.FC = () => {
 
   const handleCardClick = (currentClickedPlanet: PlanetsType) => {
     if (count > 1) {
-      // setTimeout(() => {
-      //   setCount(0);
-      //   return;
-      // }, 1000);
       return;
     } else {
       setCount(count + 1);
@@ -133,9 +129,9 @@ export const Game: React.FC = () => {
       // If it's a match
       if (clickedPlanet.matchingCardId === currentClickedPlanet.id) {
         successSound();
-        const newPairNumber = matchedPairs + 1;
+        // const newPairNumber = matchedPairs + 1;
         dispatch(setClickedPlanet({ ...currentClickedPlanet }));
-        dispatch(setMatchedPairs(newPairNumber));
+        dispatch(setMatchedPairs(matchedPairs + 1));
         setCount(0);
         dispatch(setClickedPlanet(undefined));
         return;
@@ -150,8 +146,8 @@ export const Game: React.FC = () => {
             : planet
         );
         dispatch(setPlanets(newPlanets));
-        // setCount(0);
       }, 1000);
+      dispatch(setMatchedPairs(matchedPairs));
 
       dispatch(setClickedPlanet(undefined));
     }
