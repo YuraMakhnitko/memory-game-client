@@ -32,6 +32,8 @@ export const gameSlice = createSlice({
         state.finalScore = state.score;
         state.score = 0;
         state.level = 1;
+        // state.clickedPlanet = undefined;
+        state.matchedPairs = 0;
       }
       if (state.isWon) {
         state.inGame = false;
