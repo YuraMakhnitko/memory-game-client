@@ -62,7 +62,14 @@ export const Game: React.FC = () => {
       dispatch(setResModalOpen(true));
       failSound();
     }
-  }, [matchedPairs, isFailed]);
+
+    if (count > 1) {
+      setTimeout(() => {
+        setCount(0);
+        return;
+      }, 1000);
+    }
+  }, [matchedPairs, isFailed, count]);
 
   const handleClose = () => {
     dispatch(setResModalOpen(false));
@@ -81,7 +88,7 @@ export const Game: React.FC = () => {
     if (level < 13) {
       dispatch(setTimer(defaultTimer - level * 5));
     } else {
-      dispatch(setTimer(defaultTimer));
+      dispatch(setTimer(45));
     }
   };
 
@@ -96,10 +103,11 @@ export const Game: React.FC = () => {
 
   const handleCardClick = (currentClickedPlanet: PlanetsType) => {
     if (count > 1) {
-      setTimeout(() => {
-        setCount(0);
-        return;
-      }, 1000);
+      // setTimeout(() => {
+      //   setCount(0);
+      //   return;
+      // }, 1000);
+      return;
     } else {
       setCount(count + 1);
       flipSound();
@@ -126,6 +134,7 @@ export const Game: React.FC = () => {
       if (clickedPlanet.matchingCardId === currentClickedPlanet.id) {
         successSound();
         const newPairNumber = matchedPairs + 1;
+        dispatch(setClickedPlanet({ ...currentClickedPlanet }));
         dispatch(setMatchedPairs(newPairNumber));
         setCount(0);
         dispatch(setClickedPlanet(undefined));
@@ -141,12 +150,13 @@ export const Game: React.FC = () => {
             : planet
         );
         dispatch(setPlanets(newPlanets));
-        setCount(0);
+        // setCount(0);
       }, 1000);
 
       dispatch(setClickedPlanet(undefined));
     }
   };
+
   return (
     <div className="game">
       <GameHeader />

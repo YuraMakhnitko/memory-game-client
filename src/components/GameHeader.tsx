@@ -12,7 +12,6 @@ export const GameHeader: React.FC = () => {
     setTimeout(() => {
       dispatch(setTimer(timer - 1));
     }, 1000);
-    console.log('the end');
   }
 
   return (
