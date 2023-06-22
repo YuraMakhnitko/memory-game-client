@@ -7,7 +7,7 @@ import { LoginModal } from './auth/LoginModal';
 import { LogoutModal } from './auth/LogoutModal';
 import { RegisterModal } from './auth/RegisterModal';
 import { VolumeSlider } from './VolumeSlider';
-import { Card } from './Card/Card';
+import { Planet } from './Card/Planet';
 
 export {
   TitleTabs,
@@ -19,5 +19,5 @@ export {
   LogoutModal,
   RegisterModal,
   VolumeSlider,
-  Card,
+  Planet,
 };

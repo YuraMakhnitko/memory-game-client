@@ -129,7 +129,7 @@ export const RegisterModal: React.FC<AuthModalProps> = (props) => {
               id="confirmpassword"
               type="password"
               className="game-register__input"
-              placeholder="Confirm password"
+              placeholder="Confirm password..."
               {...register('confirmPassword')}
             />
             {errors?.confirmPassword && (

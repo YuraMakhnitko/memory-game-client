@@ -5,7 +5,7 @@ import { createPlanets, PlanetsType } from '../settings/setup';
 import { shufflePlanetsArray } from '../settings/utils';
 import { Grid } from './Game.styles';
 
-import { GameHeader, ResultModalWindow, Card } from '../components';
+import { GameHeader, ResultModalWindow, Planet } from '../components';
 
 import { sounds } from '../settings/sounds';
 
@@ -108,7 +108,9 @@ export const Game: React.FC = () => {
     dispatch(setClickedPlanet(undefined));
   };
 
-  const handleCardClick = (currentClickedPlanet: PlanetsType) => {
+  const handlePlanetClick = (currentClickedPlanet: PlanetsType) => {
+    console.log(currentClickedPlanet);
+    console.log(clickedPlanet);
     if (count > 1) {
       return;
     } else {
@@ -118,7 +120,7 @@ export const Game: React.FC = () => {
         dispatch(setInGame(true));
       }
 
-      // Flip the card
+      // Flip the Planet
       const newPlanets = planets.map((planet) =>
         planet.id === currentClickedPlanet.id
           ? { ...planet, flipped: true, clickable: false }
@@ -126,7 +128,7 @@ export const Game: React.FC = () => {
       );
       dispatch(setPlanets(newPlanets));
 
-      // If this is the first card that is flipped
+      // If this is the first Planet that is flipped
       // just keep it flipped
       if (!clickedPlanet) {
         dispatch(setClickedPlanet({ ...currentClickedPlanet }));
@@ -134,7 +136,7 @@ export const Game: React.FC = () => {
       }
 
       // If it's a match
-      if (clickedPlanet.matchingCardId === currentClickedPlanet.id) {
+      if (clickedPlanet.matchingPlanetId === currentClickedPlanet.id) {
         successSound();
         dispatch(setMatchedPairs(matchedPairs + 1));
         setCount(0);
@@ -143,7 +145,7 @@ export const Game: React.FC = () => {
       }
 
       // If it's not a matched pair, wait one second and flip them back
-      if (clickedPlanet.matchingCardId !== currentClickedPlanet.id) {
+      if (clickedPlanet.matchingPlanetId !== currentClickedPlanet.id) {
         setTimeout(() => {
           const newPlanets = planets.map((planet) =>
             planet.id === clickedPlanet.id ||
@@ -163,10 +165,14 @@ export const Game: React.FC = () => {
   return (
     <div className="game">
       <GameHeader />
-      <div className="game__cards-block">
+      <div className="game__Planets-block">
         <Grid>
           {planets.map((planet) => (
-            <Card key={planet.id} card={planet} callback={handleCardClick} />
+            <Planet
+              key={planet.id}
+              planet={planet}
+              callback={handlePlanetClick}
+            />
           ))}
         </Grid>
       </div>

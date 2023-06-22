@@ -15,7 +15,7 @@ export type PlanetsType = {
   backImage: string;
   frontImage: string;
   clickable: boolean;
-  matchingCardId: string;
+  matchingPlanetId: string;
 };
 
 // Put the images in an array
@@ -37,6 +37,6 @@ export const createPlanets = (): PlanetsType[] =>
     backImage: cardBack,
     frontImage: card,
     clickable: true,
-    matchingCardId:
+    matchingPlanetId:
       i < cards.length ? `card${i + cards.length}` : `card${i - cards.length}`,
   }));

@@ -62,11 +62,11 @@ export const LoginModal: React.FC<AuthModalProps> = (props) => {
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="game-register__input-box">
-            <label htmlFor="email" className="game-register__input-label">
+            <label htmlFor="email-login" className="game-register__input-label">
               Email
             </label>
             <input
-              id="email"
+              id="email-login"
               type="email"
               className="game-register__input"
               placeholder="Email..."
@@ -77,12 +77,15 @@ export const LoginModal: React.FC<AuthModalProps> = (props) => {
             )}
           </div>
           <div className="game-register__input-box">
-            <label htmlFor="password" className="game-register__input-label">
+            <label
+              htmlFor="password-login"
+              className="game-register__input-label"
+            >
               Password
             </label>
 
             <input
-              id="password"
+              id="password-login"
               type="password"
               className="game-register__input"
               placeholder="Password..."
