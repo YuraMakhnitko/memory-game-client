@@ -165,7 +165,7 @@ export const Game: React.FC = () => {
   return (
     <div className="game">
       <GameHeader />
-      <div className="game__Planets-block">
+      <div className="game__planets-block">
         <Grid>
           {planets.map((planet) => (
             <Planet
