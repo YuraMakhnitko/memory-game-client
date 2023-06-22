@@ -84,7 +84,6 @@ export const Game: React.FC = () => {
     dispatch(setIsWon(false));
     dispatch(setLevel());
     dispatch(setPlanets(shufflePlanetsArray(createPlanets())));
-    // dispatch(setPlanets(planets));
     dispatch(setMatchedPairs(0));
     if (level < 10) {
       dispatch(setTimer(defaultTimer - level * 5));
@@ -131,17 +130,6 @@ export const Game: React.FC = () => {
       // If it's a match
       if (clickedPlanet.matchingCardId === currentClickedPlanet.id) {
         successSound();
-        dispatch(setClickedPlanet({ ...currentClickedPlanet }));
-
-        dispatch(
-          setPlanets(
-            planets.map((planet) =>
-              planet.id === currentClickedPlanet.id
-                ? { ...planet, flipped: true, clickable: false }
-                : planet
-            )
-          )
-        );
 
         dispatch(setMatchedPairs(matchedPairs + 1));
         setCount(0);
@@ -150,15 +138,17 @@ export const Game: React.FC = () => {
       }
 
       // If it's not a matched pair, wait one second and flip them back
-      setTimeout(() => {
-        const newPlanets = planets.map((planet) =>
-          planet.id === clickedPlanet.id ||
-          planet.id === currentClickedPlanet.id
-            ? { ...planet, flipped: false, clickable: true }
-            : planet
-        );
-        dispatch(setPlanets(newPlanets));
-      }, 1000);
+      if (clickedPlanet.matchingCardId !== currentClickedPlanet.id) {
+        setTimeout(() => {
+          const newPlanets = planets.map((planet) =>
+            planet.id === clickedPlanet.id ||
+            planet.id === currentClickedPlanet.id
+              ? { ...planet, flipped: false, clickable: true }
+              : planet
+          );
+          dispatch(setPlanets(newPlanets));
+        }, 1000);
+      }
       dispatch(setMatchedPairs(matchedPairs));
 
       dispatch(setClickedPlanet(undefined));

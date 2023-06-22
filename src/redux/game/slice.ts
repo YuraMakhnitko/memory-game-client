@@ -60,12 +60,14 @@ export const gameSlice = createSlice({
 
     setPlanets(state, action: PayloadAction<PlanetsType[]>) {
       state.planets = action.payload;
+      console.log(state.planets);
     },
     setMatchedPairs(state, action: PayloadAction<number>) {
       state.matchedPairs = action.payload;
     },
     setClickedPlanet(state, action: PayloadAction<undefined | PlanetsType>) {
       state.clickedPlanet = action.payload;
+      // console.log(state.clickedPlanet);
     },
   },
   extraReducers: (builder) => {
