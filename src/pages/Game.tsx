@@ -58,18 +58,36 @@ export const Game: React.FC = () => {
         dispatch(setResModalOpen(true));
       }, 300);
     }
+    // if (isFailed) {
+    //   dispatch(setResModalOpen(true));
+    //   failSound();
+    //   console.log('fail sound');
+    // }
+
+    // if (count > 1) {
+    //   setTimeout(() => {
+    //     setCount(0);
+    //     return;
+    //   }, 1000);
+    // }
+  }, [matchedPairs]);
+
+  useEffect(() => {
     if (isFailed) {
       dispatch(setResModalOpen(true));
       failSound();
+      console.log('fail sound');
     }
+  }, [isFailed]);
 
+  useEffect(() => {
     if (count > 1) {
       setTimeout(() => {
         setCount(0);
         return;
       }, 1000);
     }
-  }, [matchedPairs, isFailed, count]);
+  }, [count]);
 
   const handleClose = () => {
     dispatch(setResModalOpen(false));
@@ -130,7 +148,6 @@ export const Game: React.FC = () => {
       // If it's a match
       if (clickedPlanet.matchingCardId === currentClickedPlanet.id) {
         successSound();
-
         dispatch(setMatchedPairs(matchedPairs + 1));
         setCount(0);
         dispatch(setClickedPlanet(undefined));
